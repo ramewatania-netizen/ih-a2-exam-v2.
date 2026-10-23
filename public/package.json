@@ -1,0 +1,1 @@
+{"name":"ih-end-of-module-a2-exam","version":"1.0.0","private":true,"scripts":{"start":"node server.js","test":"node test.js"},"dependencies":{"nodemailer":"^6.10.1"},"engines":{"node":">=18"}}
