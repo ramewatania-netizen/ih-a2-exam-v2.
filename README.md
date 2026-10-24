@@ -28,3 +28,18 @@ Set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS and optionally SMTP_FROM on the s
 - SMTP result emails only work after valid server configuration.
 - localStorage is a convenience recovery method, not a reliable secure cross-device authentication system. Use an authenticated DB and teacher dashboard for a serious exam service.
 - No login, rate limiting, CSRF defense, retention policy or monitored SMTP retries are included. These should be added prior to widespread use.
+
+
+## Free email via Resend HTTPS (Render Free compatible)
+Create a Resend account using `ramewatania@gmail.com`, verify your account email, generate an API key and add these variables in Render > your Web Service > Environment:
+- `RESEND_API_KEY`: your PRIVATE key (paste into Render only, never GitHub or chat).
+- `RESULTS_EMAIL`: `ramewatania@gmail.com`
+- `RESEND_FROM`: `IH A2 Exam <onboarding@resend.dev>` (test sender only).
+For testing without a custom verified sending domain, Resend allows sending to the Resend account owner only. Check the Resend email log after a test exam. `accepted_by_provider` means Resend accepted the API request, not that inbox delivery is certain.
+IMPORTANT: Render's free instance storage is ephemeral; the local `private-results` directory may disappear after sleeping, restarting or deploying. Email reports are the only external copy until a persistent datastore is integrated. Writing items are still pending manual marking, so 44 is the objective score, not a final grade out of 50. Do NOT rely on this version for official high-stakes grades.
+
+
+## AI writing grading (optional)
+In Render Environment add `OPENAI_API_KEY` (secret key from https://platform.openai.com/api-keys). Optionally add `OPENAI_MODEL=gpt-4.1-mini`. The API requires separate usage billing from ChatGPT. No key = writing remains pending; AI failures NEVER silently turn pending work into a zero. Six writing responses are sent to the OpenAI API for evaluation. Do not put this API key in GitHub. Check institutional privacy requirements.
+
+The writing rubric is task 30%, grammar 30%, vocabulary 20%, clarity 20%. The AI returns fractional scores, feedback and improvement suggestions. Teacher review recommended for high-stakes final exams. Render Free still does not guarantee permanent result retention; email receipt is essential.
